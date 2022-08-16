@@ -248,7 +248,7 @@ class TpCache_Plugin implements Typecho_Plugin_Interface
         $exclude = array('_year', '_month', '_day', '_page');
 
         foreach ($_routingTable[0] as $key => $route) {
-            if ($route['widget'] != 'Widget_Archive') continue;
+            if ($route['widget'] != '\Widget\Archive') continue;
 
             if (preg_match($route['regx'], $path, $matches)) {
                 $key = str_replace($exclude, '', str_replace($exclude, '', $key));
