@@ -6,11 +6,13 @@ class typecho_redis implements TpCache{
     private $redis = null;
     private $host = '127.0.0.1';
     private $port = 11211;
+    private $password = '';
     private $expire = 86400;
 
     private function __construct($option=null) {
         $this->host = $option->host;
         $this->port = $option->port;
+        $this->password = $option->password;
         $this->expire = $option->expire + 0;
         $this->init($option);
     }
@@ -27,6 +29,9 @@ class typecho_redis implements TpCache{
         try{
             $this->redis = new Redis();
             $this->redis->connect($this->host, $this->port);
+            if(!empty($this->password)) {
+                $this->redis->auth($this->password);
+            }
         }catch (Exception $e){
             echo $e->getMessage();
         }

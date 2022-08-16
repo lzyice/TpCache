@@ -108,6 +108,9 @@ class TpCache_Plugin implements Typecho_Plugin_Interface
         $element = new Typecho_Widget_Helper_Form_Element_Text('port', null, '11211', '端口号', '端口号，memcache对应11211，Redis对应6379，其他类型随意填写');
         $form->addInput($element);
 
+        $element = new Typecho_Widget_Helper_Form_Element_Text('password', null, null, '密码', '连接密码，无密码请留空');
+        $form->addInput($element);
+
         $list = array('关闭', '开启');
         $element = new Typecho_Widget_Helper_Form_Element_Radio('is_debug', $list, 0, '是否开启debug');
         $form->addInput($element);
